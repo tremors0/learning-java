@@ -1,6 +1,6 @@
-package tutorial._01.lambdaExpression;
+package tutorial.lambdaExpression._01;
 
-import  tutorial._01.lambdaExpression.polymorfismGreeting.*;
+import  tutorial.lambdaExpression._01.polymorfismGreeting.*;
 
 /**
  * Trida ukazujici, proc je vyuziti lambda vyrazu lepsi, nez starsi zpusoby reseni
@@ -52,17 +52,22 @@ public class Greeter {
 
     public static void main(String[] args) {
         Greeter greeter = new Greeter();
+
+        //Vyuziti switche
         greeter.greet(GreetingsTypes.REGULAR);
+
+        //Vyuziti polymorfismu
         greeter.greet(new RudeGreeter());
 
+        //Vyuziti polymorfismu + vnitrni tridy
         Greeting innerClassGreeter = new Greeting(){
             public void greet() {
                 System.out.println("Hello, Fantomas is here");
             }
         };
-
         greeter.greet(innerClassGreeter);
 
+        //Vyuziti lambda vyrazu
         GreetingLambdaExpression greetings = () -> System.out.println("Hello World");
         greeter.greet(greetings);
         greeter.greet((GreetingLambdaExpression)()->System.out.println("Hi, that's so cool"));
