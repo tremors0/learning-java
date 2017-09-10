@@ -1,4 +1,4 @@
-package tutorial._01.lambdaExpression;
+package tutorial._01.lambdaExpression.polymorfismGreeting;
 
 public class RudeGreeter implements Greeting {
 

@@ -1,5 +1,7 @@
 package tutorial._01.lambdaExpression;
 
+import  tutorial._01.lambdaExpression.polymorfismGreeting.*;
+
 /**
  * Trida ukazujici, proc je vyuziti lambda vyrazu lepsi, nez starsi zpusoby reseni
  */
@@ -72,7 +74,7 @@ public class Greeter {
  * Ciste a prehledne reseni.
  * Interface musi obsahovat pouze jednu metodu se stejnou signaturou, jako ma lambda vyraz.
  * Toto rozhrani bych ani nemusel vytvaret. Lze vyuzit existujici rozhrani vyuzite pro zavedeni polymorfismu.
- * Je zde jen pro neprehlednost.
+ * Je zde jen pro (ne)prehlednost.
  */
 interface GreetingLambdaExpression {
     void greet();
