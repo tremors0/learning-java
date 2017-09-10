@@ -32,13 +32,6 @@ public class Greeter {
     }
 
     /**
-     * Metoda, ktera ma jako parametr lambda vyraz, ktery kompletne urcuje jeji chovani.
-     */
-    public void greet(GreetingLambdaExpression greeting) {
-        greeting.greet();;
-    }
-
-    /**
      * Druhy a lepsi zpusob je vyuzit polymorfii.
      * Napriklad pouzit iterface greeting, ktery ma metodu greet, kterou musi tridy, ktere jej implementuji
      *     doplnit implementaci.
@@ -48,10 +41,25 @@ public class Greeter {
         greeter.greet();
     }
 
+    /**
+     * Metoda, ktera ma jako parametr lambda vyraz, ktery kompletne urcuje jeji chovani.
+     */
+    public void greet(GreetingLambdaExpression greeting) {
+        greeting.greet();;
+    }
+
     public static void main(String[] args) {
         Greeter greeter = new Greeter();
         greeter.greet(GreetingsTypes.REGULAR);
         greeter.greet(new RudeGreeter());
+
+        Greeting innerClassGreeter = new Greeting(){
+            public void greet() {
+                System.out.println("Hello, Fantomas is here");
+            }
+        };
+
+        greeter.greet(innerClassGreeter);
 
         GreetingLambdaExpression greetings = () -> System.out.println("Hello World");
         greeter.greet(greetings);
@@ -62,8 +70,9 @@ public class Greeter {
 /**
  * Interface pro lambda vyrazy. Misto vyuzivani polymorfismu, nebo switche lze vyuzit pouze jeden interface.
  * Ciste a prehledne reseni.
- * Metoda greet definuje chovani. Tudiz funguje, jako kdybychom predavali funkci.
- * Interface musi obsahovat pouze jednu metody se stejnou signaturou, jako ma lambda vyraz.
+ * Interface musi obsahovat pouze jednu metodu se stejnou signaturou, jako ma lambda vyraz.
+ * Toto rozhrani bych ani nemusel vytvaret. Lze vyuzit existujici rozhrani vyuzite pro zavedeni polymorfismu.
+ * Je zde jen pro neprehlednost.
  */
 interface GreetingLambdaExpression {
     void greet();
